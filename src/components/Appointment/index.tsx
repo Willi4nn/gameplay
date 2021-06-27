@@ -1,15 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-import { categories } from '../../utils/categories';
-import { GuildIcon } from '../GuildIcon';
-import { GuildProps } from '../Guild';
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
+import { View, Text } from 'react-native';
+
+import { theme } from '../../global/styles/theme';
+import { styles } from './styles';
 import PlayerSvg from '../../assets/player.svg';
 import CalendarSvg from '../../assets/calendar.svg';
 
-import { styles } from './styles';
-import { theme } from '../../global/styles/theme';
+import { GuildProps } from '../Guild';
+import { GuildIcon } from '../GuildIcon';
+import { categories } from '../../utils/categories';
+
 
 export type AppointmentProps = {
   id: string;
@@ -30,14 +32,14 @@ export function Appointment({ data, ...rest }: Props) {
 
   return (
     <RectButton {...rest}>
-
       <View style={styles.container}>
         <LinearGradient
-          style={styles.guilIconContainer}
+          style={styles.guildIconContainer}
           colors={[secondary50, secondary70]}
         >
-          <GuildIcon />
-        </LinearGradient >
+          <GuildIcon guildId={data.guild.id} iconId={data.guild.icon} />
+        </LinearGradient>
+
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.title}>
@@ -48,6 +50,7 @@ export function Appointment({ data, ...rest }: Props) {
               {category.title}
             </Text>
           </View>
+
           <View style={styles.footer}>
             <View style={styles.dateInfo}>
               <CalendarSvg />
@@ -72,4 +75,5 @@ export function Appointment({ data, ...rest }: Props) {
       </View>
     </RectButton>
   )
+
 }

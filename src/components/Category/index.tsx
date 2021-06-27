@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { styles } from './styles';
-import { SvgProps } from 'react-native-svg';
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SvgProps } from 'react-native-svg';
+import { View, Text } from 'react-native';
+
+import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
 
 type Props = RectButtonProps & {
@@ -39,7 +40,10 @@ export function Category({
             } />
           }
 
-          <Icon width={48} height={48} />
+          <Icon
+            width={48}
+            height={48}
+          />
 
           <Text style={styles.title}>
             {title}

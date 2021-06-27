@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-  View,
-  Text,
   TouchableOpacity,
-  TouchableOpacityProps
+  TouchableOpacityProps,
+  Text,
+  View
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { theme } from '../../global/styles/theme';
 
 import { GuildIcon } from '../GuildIcon';
-import { theme } from '../../global/styles/theme';
 
 export type GuildProps = {
   id: string;
@@ -29,15 +29,15 @@ export function Guild({ data, ...rest }: Props) {
       style={styles.container}
       activeOpacity={0.7}
       {...rest}
-
     >
-      <GuildIcon />
+      <GuildIcon guildId={data.id} iconId={data.icon} />
 
       <View style={styles.content}>
         <View>
           <Text style={styles.title}>
             {data.name}
           </Text>
+
           <Text style={styles.type}>
             {data.owner ? 'Administrador' : 'Convidado'}
           </Text>
@@ -49,7 +49,6 @@ export function Guild({ data, ...rest }: Props) {
         color={theme.colors.heading}
         size={24}
       />
-
     </TouchableOpacity>
-  )
+  );
 }
